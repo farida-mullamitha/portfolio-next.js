@@ -1,70 +1,76 @@
 'use client';
 import React from 'react';
-import dynamic from 'next/dynamic';
-
-const AnimatedNumbers = dynamic(
-  () => {
-    return import('react-animated-numbers');
-  },
-  { ssr: false },
-);
-
-// const achievementsList = [
-//   {
-//     metric: 'Projects',
-//     value: '100',
-//     postfix: '+',
-//   },
-//   {
-//     prefix: '~',
-//     metric: 'Users',
-//     value: '100,000',
-//   },
-//   {
-//     metric: 'Awards',
-//     value: '7',
-//   },
-//   {
-//     metric: 'Years',
-//     value: '5',
-//   },
-// ];
+import { motion } from 'framer-motion';
 
 const ExperienceSection = () => {
   return (
-    <>
-      <section id="experience">
-        <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-          <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">Experience</h2>
-          <div className="flex flex-col sm:flex-row gap-6 justify-between w-full">
-            <div className="border-[#33353F] border-2 rounded-lg py-2 px-2 cursor-pointer w-full shadow-sm shadow-blue-900 transition-all hover:scale-90">
-              <h1 className="font-extrabold">Full Stack Web Developer Intern (On-Site) | Rethinking Web Vadodara</h1>
-              <span className="font-thin">June 2024 (present)</span>
-              <p className="font-medium">
-                As an intern at Rethinking Web, I contributed to both frontend and backend development of web
-                applications. I worked with React.js and Tailwind CSS to create responsive, user-friendly interfaces,
-                and used Node.js and Express for backend development, handling API integrations and database management
-                with PostgreSQL and MongoDB. This experience allowed me to enhance my skills across the full web
-                development stack.
-              </p>
-            </div>
-            <div className="border-[#33353F] border-2 rounded-lg py-2 px-2 cursor-pointer w-full shadow-sm shadow-blue-900 transition-all hover:scale-90">
-              <h1 className="font-extrabold">
-                {' '}
-                Data Science Intern (Remote) | IBM SkillsBuild and CSRBOX Micro-Internship
-              </h1>
-              <span className="font-thin">March 2024</span>
-              <p className="font-medium">
-                During this remote micro-internship, I gained hands-on experience in data science, focusing on data
-                wrangling, exploratory data analysis, and basic machine learning. I worked on real-world datasets,
-                applied statistical methods, and developed predictive models, enhancing my practical skills in data
-                science and analytics.
-              </p>
-            </div>
-          </div>
+    <section id="experience" className="relative py-28 bg-black overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-green-500/5 blur-[140px] rounded-full" />
+
+      <div className="relative max-w-6xl mx-auto px-6">
+        <h2 className="text-center text-4xl sm:text-5xl font-bold mb-16">
+          <span className="text-white">Work</span> <span className="text-green-400">Experience</span>
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-10">
+          {/* Netviss */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="bg-white/5 border border-green-500/20 rounded-2xl p-8 backdrop-blur-xl hover:border-green-400/40 transition duration-500 hover:-translate-y-2"
+          >
+            <h3 className="text-xl font-bold text-white mb-2">Full Stack Engineer | Netviss</h3>
+            <span className="text-green-400 text-sm">Feb 2025 – Present</span>
+
+            <p className="text-gray-300 mt-4 leading-relaxed">
+              Working across frontend and backend systems to build scalable, secure, and production-grade web
+              applications. Contributing to architecture design, API development, performance optimization, and
+              deployment workflows while ensuring clean code practices and system reliability.
+            </p>
+          </motion.div>
+
+          {/* Rethinking Web */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="bg-white/5 border border-green-500/20 rounded-2xl p-8 backdrop-blur-xl hover:border-green-400/40 transition duration-500 hover:-translate-y-2"
+          >
+            <h3 className="text-xl font-bold text-white mb-2">Full Stack Web Developer Intern | Rethinking Web</h3>
+            <span className="text-green-400 text-sm">June 2024 - September 2024</span>
+
+            <p className="text-gray-300 mt-4 leading-relaxed">
+              Contributed to frontend and backend development using React.js, Tailwind CSS, Node.js, and Express. Built
+              responsive user interfaces, integrated APIs, and managed PostgreSQL and MongoDB databases while working on
+              real-world client projects.
+            </p>
+          </motion.div>
+
+          {/* ERPNext Python Developer */}
+          {/* ERPNext Freelancer */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white/5 border border-green-500/20 rounded-2xl p-8 backdrop-blur-xl hover:border-green-400/40 transition duration-500 hover:-translate-y-2 md:col-span-2"
+          >
+            <h3 className="text-xl font-bold text-white mb-2">Freelance Python Developer (ERPNext)</h3>
+            <span className="text-green-400 text-sm">June 2025 – November 2025</span>
+
+            <p className="text-gray-300 mt-4 leading-relaxed">
+              Delivered ERPNext customizations and backend solutions for clients, developing tailored modules using
+              Python and the Frappe framework. Implemented business logic, optimized database workflows, and handled
+              system integrations to streamline enterprise resource planning processes.
+            </p>
+          </motion.div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

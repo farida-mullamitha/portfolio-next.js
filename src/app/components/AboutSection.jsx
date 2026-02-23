@@ -1,88 +1,84 @@
 'use client';
-import React, { useTransition, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import TabButton from './TabButton';
-
-const TAB_DATA = [
-  {
-    title: 'Skills',
-    id: 'skills',
-    content: (
-      <ul className="space-y-4 text-sm sm:text-base text-gray-300">
-        <li>
-          <span className="font-semibold text-primary-400">Frontend:</span>{' '}
-          React, Next.js, JavaScript, Tailwind CSS
-        </li>
-        <li>
-          <span className="font-semibold text-primary-400">Backend:</span>{' '}
-          Node.js, Express.js, REST APIs, JWT Authentication
-        </li>
-        <li>
-          <span className="font-semibold text-primary-400">Database:</span>{' '}
-          PostgreSQL, MongoDB, Sequelize, Data Modeling
-        </li>
-        <li>
-          <span className="font-semibold text-primary-400">DevOps:</span>{' '}
-          Git, GitHub, Docker (Basics), Vercel
-        </li>
-      </ul>
-    ),
-  },
-];
 
 const AboutSection = () => {
-  const [tab, setTab] = useState('skills');
-  const [isPending, startTransition] = useTransition();
-
-  const handleTabChange = id => {
-    startTransition(() => {
-      setTab(id);
-    });
-  };
-
   return (
-    <section id="about" className="py-24">
-      <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-start">
-        
+    <section
+      id="about"
+      className="relative py-32 bg-black overflow-hidden"
+    >
+      {/* Background Glow */}
+      <div className="absolute top-20 right-0 w-[500px] h-[400px] bg-green-500/5 blur-[140px] rounded-full" />
+
+      <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+
         {/* LEFT SIDE */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
-            About Me
-          </h2>
-
-          <p className="text-gray-400 leading-relaxed text-base sm:text-lg max-w-xl">
-            Full Stack Engineer with 1+ year of experience building scalable,
-            secure and high-performance web applications. At Netviss, I work
-            across frontend and backend systems, focusing on clean architecture,
-            optimized performance and production reliability.
-          </p>
-        </motion.div>
-
-        {/* RIGHT SIDE */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md"
         >
-          <div className="flex gap-4 mb-8">
-            <TabButton
-              selectTab={() => handleTabChange('skills')}
-              active={tab === 'skills'}
-            >
-              Skills
-            </TabButton>
-          </div>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-8">
+            <span className="text-white">About</span>{' '}
+            <span className="text-green-400">Me</span>
+          </h2>
 
-          <div>{TAB_DATA.find(t => t.id === tab).content}</div>
+          <p className="text-gray-300 leading-relaxed text-lg">
+            Full Stack Engineer with 1+ year of experience building scalable,
+            secure and high-performance web applications. I specialize in
+            creating modern frontend systems and reliable backend architectures
+            with production-level performance and clean code practices.
+          </p>
+
+          <div className="mt-8 h-[2px] w-20 bg-green-400"></div>
         </motion.div>
 
+        {/* RIGHT SIDE CARD */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
+          className="relative bg-white/5 border border-green-500/20 rounded-2xl p-10 backdrop-blur-xl hover:border-green-400/40 transition duration-500"
+        >
+          <h3 className="text-2xl font-semibold text-white mb-6">
+            Technical Expertise
+          </h3>
+
+          <ul className="space-y-5 text-gray-300 text-base">
+
+            <li>
+              <span className="text-green-400 font-semibold">
+                Frontend:
+              </span>{' '}
+              React, Next.js, JavaScript, Tailwind CSS
+            </li>
+
+            <li>
+              <span className="text-green-400 font-semibold">
+                Backend:
+              </span>{' '}
+              Node.js, Express.js, REST APIs, JWT Authentication
+            </li>
+
+            <li>
+              <span className="text-green-400 font-semibold">
+                Database:
+              </span>{' '}
+              PostgreSQL, MongoDB, Sequelize
+            </li>
+
+            <li>
+              <span className="text-green-400 font-semibold">
+                DevOps:
+              </span>{' '}
+              Git, Docker (Basics), Vercel
+            </li>
+
+          </ul>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,35 +1,37 @@
 import React from "react";
-import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
-const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
+export default function ProjectCard({ project }) {
   return (
-    <div>
-      <div
-        className="h-52 md:h-72 rounded-t-xl relative group"
-        style={{ background: `url(${imgUrl})`, backgroundSize: "cover" ,backgroundPosition:"top bottom"}}
-      >
-        <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
-          <Link
-            href={gitUrl}
-            className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
-          </Link>
-          {/* <Link
-            href={previewUrl}
-            className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  cursor-pointer group-hover/link:text-white" />
-          </Link> */}
+    <div className={`group border-b border-white/10 pb-12 ${project.featured ? "pb-20" : ""}`}>
+
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+
+        <div className="max-w-2xl">
+          <h3 className={`font-bold text-white group-hover:text-green-400 transition 
+            ${project.featured ? "text-4xl" : "text-2xl"}`}>
+            {project.title}
+          </h3>
+
+          <p className="text-gray-400 mt-4 leading-relaxed">
+            {project.description}
+          </p>
+
+          <p className="text-green-400 text-sm mt-4">
+            {project.tech}
+          </p>
         </div>
-      </div>
-      <div className="text-white rounded-b-xl mt-3 bg-[#181818]py-6 px-4">
-        <h5 className="text-xl font-semibold mb-2">{title}</h5>
-        <p className="text-[#ADB7BE]">{description}</p>
+
+        <Link
+          href={project.github}
+          className="flex items-center gap-2 text-white hover:text-green-400 transition"
+        >
+          View Project
+          <ArrowUpRightIcon className="h-5 w-5" />
+        </Link>
+
       </div>
     </div>
   );
-};
-
-export default ProjectCard;
+}
