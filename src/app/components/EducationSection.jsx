@@ -1,30 +1,37 @@
 'use client';
 import React from 'react';
-import dynamic from 'next/dynamic';
-
-const AnimatedNumbers = dynamic(
-  () => {
-    return import('react-animated-numbers');
-  },
-  { ssr: false },
-);
 
 const EducationSection = () => {
   return (
-    <>
-      <section id="eduction">
-        <h2 className="text-left text-4xl font-bold text-white mt-4 mb-8 md:mb-12">Education</h2>
-        <div className="flex flex-row">
-          <div className="border-[#33353F] border-2 rounded-lg py-5 px-16 cursor-pointer shadow-sm shadow-blue-900 ">
-            <h1 className="font-extrabold text-2xl">Government Engineering College, Dahod</h1>
-            <p className="font-bold text-lg">
-              B.E.- Computer Engineering <span className="font-thin ml-10">CGPA : (8.1/10)</span>
-            </p>
-            <span className="font-thin text-lg">October 2021 - May 2025</span>
+    <section id="education" className="py-28 bg-black">
+      <div className="max-w-5xl mx-auto px-6">
+
+        <h2 className="text-5xl font-bold text-white mb-16">
+          Education
+        </h2>
+
+        <div className="border-l-2 border-green-500 pl-8 relative">
+
+          {/* timeline dot */}
+          <div className="absolute -left-[9px] top-2 w-4 h-4 bg-green-500 rounded-full" />
+
+          <h3 className="text-2xl font-semibold text-white">
+            Bachelor of Engineering – Computer Engineering
+          </h3>
+
+          <p className="text-gray-400 mt-2">
+            Government Engineering College, Dahod
+          </p>
+
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4 text-sm text-gray-400">
+            <span>October 2021 – May 2025</span>
+            <span>CGPA: 8.5 / 10</span>
           </div>
+
         </div>
-      </section>
-    </>
+
+      </div>
+    </section>
   );
 };
 
